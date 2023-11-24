@@ -10,6 +10,7 @@
   3. https://stackoverflow.com/questions/209840/make-a-dictionary-dict-from-separate-lists-of-keys-and-values
   4. https://realpython.com/python-quiz-application/
   5. https://kevinczarzasty.medium.com/programming-in-python-to-make-a-quiz-about-linux-bash-db5ca43f2356
+  6. https://www.giraffeacademy.com/programming-languages/python/building-a-quiz/
 # dependencies:  
   1. Q & A Style:  
       a. Column 1 in csv file must be QUESTION  
