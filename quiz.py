@@ -18,7 +18,6 @@ class Quiz:
                 self.incorrect_answers.append(question['question'])
                 print(f"I'm sorry, but that is incorrect. The correct answer is {question['answer']}\n")
         else:
-            index = 0
             print(question['question'])
             for option in question:
                 option_list = []
