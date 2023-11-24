@@ -7,24 +7,24 @@ class Quiz:
         self.incorrect_answers = []
         self.score = 0
 
-    def question_user(self, question):
+    def question_user(self, questions):
         if quiz_type != 3:
-            print(question['question'])
+            print(questions['question'])
             user_answer = input("Your answer: ")
-            if user_answer.lower() == question['answer'].lower():
+            if user_answer.lower() == questions['answer'].lower():
                 print("Correct!\n")
                 self.score += 1
             else:
-                self.incorrect_answers.append(question['question'])
-                print(f"I'm sorry, but that is incorrect. The correct answer is {question['answer']}\n")
+                self.incorrect_answers.append(questions['question'])
+                print(f"I'm sorry, but that is incorrect. The correct answer is {questions['answer']}\n")
         else:
-            print(question['question'])
-            for option in question:
+            print(questions['question'])
+            for option in questions:
                 option_list = []
-                option_list.append(question['answer'])
-                option_list.append(question['option1'])                
-                option_list.append(question['option2'])                
-                option_list.append(question['option3'])
+                option_list.append(questions['answer'])
+                option_list.append(questions['option1'])                
+                option_list.append(questions['option2'])                
+                option_list.append(questions['option3'])
                 random.shuffle(option_list)
                 answer_labels = [1, 2, 3, 4]
                 answers = option_list
@@ -33,12 +33,12 @@ class Quiz:
                 print(key, ': ', value)
             user_answer = int(input("Your answer: "))
             final_answer = option_dict.get(user_answer)
-            if final_answer == question['answer']:
+            if final_answer == questions['answer']:
                 print("Correct!\n")
                 self.score += 1
             else:
-                self.incorrect_answers.append(question['question'])
-                print(f"I'm sorry, but that is incorrect. The correct answer is {question['answer']}.\n")
+                self.incorrect_answers.append(questions['question'])
+                print(f"I'm sorry, but that is incorrect. The correct answer is {questions['answer']}.\n")
 
     def execute_quiz(self):
         for question in self.questions:
