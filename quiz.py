@@ -7,6 +7,7 @@ class Quiz:
         self.incorrect_answers = []
         self.score = 0
 
+#Present user with questions and corresponding answer prompts based on quiz type
     def question_user(self, questions):
         if quiz_type != 3:
             print(questions['question'])
@@ -40,6 +41,7 @@ class Quiz:
                 self.incorrect_answers.append(questions['question'])
                 print(f"I'm sorry, but that is incorrect. The correct answer is {questions['answer']}.\n")
 
+#Function to execute the quiz program and generate a final grade plus summary of review items as applicable
     def execute_quiz(self):
         for question in self.questions:
             self.question_user(question)
@@ -52,13 +54,13 @@ class Quiz:
                 print(f'\t\t{self.incorrect_answers[i]}')
                 i+=1
 
+#Function to create questions, answers, and multiple choice options from csv file
 def extract_questions(filename):
-    questions = []
-
+    questions = [] #for storing the extracted questions and answers
     with open(filename, 'r') as file:
-        filename_string = str(filename)
-        filename_tokens = filename_string.split('.')  
-        file_type = filename_tokens[1]
+        filename_string = str(filename) #convert to string so can do split and check file type
+        filename_tokens = filename_string.split('.') #create token for file type extentions
+        file_type = filename_tokens[1] #store filetype in variable for if comparison that follows
         if file_type == 'csv' and quiz_type == 1:
             csv_reader = csv.DictReader(file)
             for row in csv_reader:
@@ -87,6 +89,8 @@ def extract_questions(filename):
             print('File type not supported')            
     return questions
 
+#Main program: takes file name from user, prompts user selection of quiz type, 
+#generates questions to send to the Quiz class for program execution
 if __name__ == "__main__":
     quiz_filename = input('Enter quiz file: ')
     print('Please select which type of quiz you would like to run?')
