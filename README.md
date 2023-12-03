@@ -7,7 +7,8 @@
 # sources used for helping with code development:  
   1. https://www.geeksforgeeks.org/working-csv-files-python/  
   2. https://cs.indstate.edu/~jkinne/cs101-f2021/code/HW/p1/matching_quiz.py  
-  3. https://stackoverflow.com/questions/209840/make-a-dictionary-dict-from-separate-lists-of-keys-and-values  
+  3. https://stackoverflow.com/questions/209840/make-a-dictionary-dict-from-separate-lists-of-keys-and-values
+  4. https://chat.openai.com/c/4af26db5-2cfe-4173-b42e-ef55590de2e7
 # dependencies:  
   1. Q & A Style:  
       a. Column 1 in csv file must be QUESTION  
