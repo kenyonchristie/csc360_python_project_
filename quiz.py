@@ -9,17 +9,19 @@ class Quiz:
 
 #Present user with questions and corresponding answer prompts based on quiz type
     def question_user(self, questions):
-        if quiz_type != 3:
+        if quiz_type != 3:     
             print(questions['question'])
-            user_answer = input("Your answer: ")
+            print()
+            user_answer = input("\nYour answer: ")
             if user_answer.lower() == questions['answer'].lower():
-                print("Correct!\n")
+                print("\nCorrect!\n")
                 self.score += 1
             else:
                 self.incorrect_answers.append(questions['question'])
-                print(f"I'm sorry, but that is incorrect. The correct answer is {questions['answer']}\n")
+                print(f"\nI'm sorry, but that is incorrect. The correct answer is {questions['answer']}\n")
         else:
             print(questions['question'])
+            print()
             for option in questions:
                 option_list = []
                 option_list.append(questions['answer'])
@@ -32,14 +34,14 @@ class Quiz:
                 option_dict = dict(zip(answer_labels, answers))
             for key, value in option_dict.items():
                 print(key, ': ', value)
-            user_answer = int(input("Your answer: "))
+            user_answer = int(input("\nYour answer: "))
             final_answer = option_dict.get(user_answer)
             if final_answer == questions['answer']:
-                print("Correct!\n")
+                print("\nCorrect!\n")
                 self.score += 1
             else:
                 self.incorrect_answers.append(questions['question'])
-                print(f"I'm sorry, but that is incorrect. The correct answer is {questions['answer']}.\n")
+                print(f"\nI'm sorry, but that is incorrect. The correct answer is {questions['answer']}.\n")
 
 #Function to execute the quiz program and generate a final grade plus summary of review items as applicable
     def execute_quiz(self):
@@ -62,21 +64,24 @@ def extract_questions(filename):
         filename_tokens = filename_string.split('.') #create token for file type extentions
         file_type = filename_tokens[1] #store filetype in variable for if comparison that follows
         if file_type == 'csv' and quiz_type == 1:
-            csv_reader = csv.DictReader(file)
+            csv_reader = list(csv.DictReader(file))
+            random.shuffle(csv_reader)
             for row in csv_reader:
                 questions.append({
                     'question': row['QUESTION'],
                     'answer': row['ANSWER']
                 })
         elif file_type == 'csv' and quiz_type == 2:
-            csv_reader = csv.DictReader(file)
+            csv_reader = list(csv.DictReader(file))
+            random.shuffle(csv_reader)
             for row in csv_reader:
                 questions.append({
                     'question': row['ANSWER'],
                     'answer': row['QUESTION']
                 })
         elif file_type == 'csv' and quiz_type == 3:
-            csv_reader = csv.DictReader(file)
+            csv_reader = list(csv.DictReader(file))
+            random.shuffle(csv_reader)
             for row in csv_reader:
                 questions.append({
                     'question': row['QUESTION'],
@@ -93,8 +98,9 @@ def extract_questions(filename):
 #generates questions to send to the Quiz class for program execution
 if __name__ == "__main__":
     quiz_filename = input('Enter quiz file: ')
-    print('Please select which type of quiz you would like to run?')
-    quiz_type = int(input('Enter 1 for question and answer, 2 for Jeopardy-style, or 3 for multiple choice: '))
+    print('\nPlease select which type of quiz you would like to run?')
+    quiz_type = int(input('\nEnter 1 for Question & Answer, 2 for Jeopardy-style, or 3 for Multiple Choice: '))
     quiz_questions = extract_questions(quiz_filename)
     quiz = Quiz(quiz_questions)
+    print()
     quiz.execute_quiz()
