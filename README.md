@@ -11,6 +11,7 @@
   4. https://realpython.com/python-quiz-application/
   5. https://kevinczarzasty.medium.com/programming-in-python-to-make-a-quiz-about-linux-bash-db5ca43f2356
   6. https://www.giraffeacademy.com/programming-languages/python/building-a-quiz/
+  7. https://chat.openai.com/c/a5ac4eea-1879-4507-a531-897c88f0ecb4
 # dependencies:  
   1. Q & A Style:  
       a. Column 1 in csv file must be QUESTION  
