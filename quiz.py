@@ -257,19 +257,22 @@ if __name__ == "__main__":
                 break
             except ValueError as ve:
                 print(ve)
-    
-    try:
-        gui_check = exit_input('\nWould you like to run this quiz in a GUI? (Y/N): ')
-        if(gui_check.lower() not in ['y', 'n']):
-            raise ValueError
-    except ValueError:
-        exit_input('Invalid selection. Please enter Y for Yes or N for No: ')
-    else:
-        if gui_check.lower() == 'n':
-            quiz = Quiz(quiz_questions, int(quiz_type))
-        else:
-            root = tk.Tk()
-            quiz = QuizGui(root, quiz_questions, int(quiz_type))
-            root.mainloop()  
+    quiz = None
+    while quiz == None:
+        try:
+            gui_check = exit_input('\nWould you like to run this quiz in a GUI? (Y/N): ')
+            if(gui_check.lower() not in ['y', 'n']):
+                raise ValueError('Invalid selection. Please enter Y for Yes or N for No: ')
+            if gui_check.lower() == 'n':
+                quiz = Quiz(quiz_questions, int(quiz_type))
+            else:
+                root = tk.Tk()
+                quiz = QuizGui(root, quiz_questions, int(quiz_type))
+                root.mainloop()  
+            break
+        except ValueError as ve:
+            print(ve)
+          
     print()
     quiz.execute_quiz(int(quiz_type))     
+
