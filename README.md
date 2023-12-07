@@ -12,6 +12,10 @@
   5. https://kevinczarzasty.medium.com/programming-in-python-to-make-a-quiz-about-linux-bash-db5ca43f2356
   6. https://www.giraffeacademy.com/programming-languages/python/building-a-quiz/
   7. https://chat.openai.com/c/a5ac4eea-1879-4507-a531-897c88f0ecb4
+  8. https://www.youtube.com/watch?v=zVv6EbJlpqs (tKinter quiz tutorial)
+  9. https://www.youtube.com/watch?v=gfV1a3ri1tk (tKinter quiz tutorial)
+  10. https://www.youtube.com/watch?v=uqJZWLlnSqs (tKinter quiz tutorial)
+  11. https://www.youtube.com/watch?v=kI1C2uAlPfU (tKinter quiz tutorial)
 # dependencies:  
   1. Q & A Style:  
       a. Column 1 in csv file must be QUESTION  
