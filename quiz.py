@@ -69,6 +69,8 @@ class Quiz:
                 i+=1
 
 # GUI Quiz Class inheriting from the Quiz Class (base class)
+# Creates the question and answer frames and associted entries
+# and labels with some minor styling
 class QuizGui(Quiz):
     def __init__(self, master, quiz_questions, quiz_type):
         super().__init__(quiz_questions, quiz_type)   
@@ -116,6 +118,10 @@ class QuizGui(Quiz):
 
         self.output_question()
 
+# Output the GUI question window to use; for thw GUI version, needed 
+# a variable copying the shuffled options for answer validation later
+# because answers given with an option button rather than a dictionary 
+# selection
     def output_question(self):
         if self.q_index < len(self.questions):
             question = self.questions[self.q_index]['question']
@@ -134,12 +140,13 @@ class QuizGui(Quiz):
         else:
             self.display_result()
 
+# For the GUI version, validate the user answers, updating score accordingly, and store incorrect
+# answers in the incorrect_answer variable for summary output in display_result function
     def validation(self):
         if self.quiz_type == 3:     
             correct_answer = self.questions[self.q_index]['answer']
-            user_choice = self.shuffled_options[self.user_answer.get() - 1]
-
-            if user_choice == correct_answer:
+            user_choice = self.shuffled_options[self.user_answer.get() - 1] 
+            if user_choice == correct_answer:# compare indices instea
                 self.score += 1
             else:
                 self.incorrect_answers.append(self.questions[self.q_index]['question'])
@@ -156,21 +163,21 @@ class QuizGui(Quiz):
             self.user_answer.delete(0, tk.END)
         self.output_question()
 
+# Display a results window giving the user a final grade based on 100-pt scale
+# If the user missed any questions, display a review window listing which questions they missed
     def display_result(self):
         final_score = int(self.score / len(self.questions) * 100)
         messagebox.showinfo("Quiz Result", f'You scored {final_score}%.')
-        if self.quiz_type == 3 and len(self.incorrect_answers) > 0:
-            messagebox.showinfo("Review", "Based on your answers, you should review the following questions:")
-            review_text = ""
-            for answer in self.incorrect_answers:
-                review_text += f"\n- {answer}"
-            messagebox.showinfo("Incorrect Answers", review_text)
-        elif len(self.incorrect_answers) > 0:
-            messagebox.showinfo("Review", "Based on your answers, you should review the following questions:\n\n" + "\n".join(self.incorrect_answers))
+        if len(self.incorrect_answers) > 0:
+            review_text = f'Based on your answers, you should review the following questions:\n'
+            for question in self.incorrect_answers:
+                review_text += f"\n- {question}"
+            messagebox.showinfo("Review", review_text)
         self.master.destroy()
         sys.exit()
 
 # Function to create questions, answers, and multiple choice options from csv file
+# Exception handling checks for file to exist and to be type csv
 def extract_questions(filename, quiz_type):
     questions = [] #for storing the extracted questions and answers
     try:
@@ -220,6 +227,8 @@ def extract_questions(filename, quiz_type):
         print('\nMake sure you\'re loading a CSV file')
         return None
 
+# This function replaces all instances of input() to check for a user entry of quit,
+# which exits the program, before processing other input values
 def exit_input(text):
     user_input = input(text)
     if user_input.lower() == 'quit':
@@ -229,6 +238,8 @@ def exit_input(text):
     
 # Main program: takes file name from user, prompts user selection of quiz type, 
 # generates questions to send to the Quiz class for program execution
+# Also gives the user an option to run it in a GUI, which calls to the QuizGui
+# class, that inherits from the base class Quiz
 if __name__ == "__main__":
     quiz_questions = None
     while quiz_questions == None: # loop to get user input 
