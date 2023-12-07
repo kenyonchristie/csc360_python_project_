@@ -165,7 +165,7 @@ class QuizGui(Quiz):
 
 # Display a results window giving the user a final grade based on 100-pt scale
 # If the user missed any questions, display a review window listing which questions they missed
-    def display_result(self):
+    def display_result(self): 
         final_score = int(self.score / len(self.questions) * 100)
         messagebox.showinfo("Quiz Result", f'You scored {final_score}%.')
         if len(self.incorrect_answers) > 0:
@@ -275,4 +275,5 @@ if __name__ == "__main__":
           
     print()
     quiz.execute_quiz(int(quiz_type))     
+
 
