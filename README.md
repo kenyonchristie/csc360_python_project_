@@ -16,7 +16,8 @@
   9. https://www.youtube.com/watch?v=gfV1a3ri1tk (tKinter quiz tutorial)
   10. https://www.youtube.com/watch?v=uqJZWLlnSqs (tKinter quiz tutorial)
   11. https://www.youtube.com/watch?v=kI1C2uAlPfU (tKinter quiz tutorial)
-  12. Riley Knybel, Eastern Connecticut State University tutor
+  12. https://chat.openai.com/c/eda57947-48b8-4824-b4e5-5544fb7bd48a
+  13. Riley Knybel, Eastern Connecticut State University tutor
 # dependencies:  
   1. Q & A Style:  
       a. Column 1 in csv file must be QUESTION  
