@@ -245,14 +245,18 @@ if __name__ == "__main__":
     while quiz_questions == None: # loop to get user input 
         quiz_filename = exit_input('Enter quiz file: ')
         print('\nPlease select which type of quiz you would like to run?')
-        try:
+        while True:
             quiz_type = exit_input('\nEnter 1 for Question & Answer, 2 for Jeopardy-style, or 3 for Multiple Choice: ')
-            if int(quiz_type) not in [1,2,3]:
-                raise ValueError
-        except ValueError:
-            print('Enter 1, 2, 3 or quit')
-        else:
-            quiz_questions = extract_questions(quiz_filename, int(quiz_type))
+            if quiz_type.lower() == 'quit':
+                exit()
+            try:
+                quiz_type = int(quiz_type)
+                if quiz_type not in [1, 2, 3]:
+                    raise ValueError('Enter 1, 2, 3, OR quit')
+                quiz_questions = extract_questions(quiz_filename, int(quiz_type))
+                break
+            except ValueError as ve:
+                print(ve)
     
     try:
         gui_check = exit_input('\nWould you like to run this quiz in a GUI? (Y/N): ')
